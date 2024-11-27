@@ -1,0 +1,54 @@
+To run the Django project:
+
+Install Python and Virtual Environment
+
+Install Python 3.x from Python.org.
+Install virtualenv: pip install virtualenv.
+Set Up the Project
+
+Clone the project repository.
+Navigate to the project directory.
+Create and Activate Virtual Environment
+
+Run virtualenv venv.
+Activate the virtual environment:
+Windows: venv\Scripts\activate
+macOS/Linux: source venv/bin/activate
+Install Dependencies
+
+
+Configure the Database
+
+Ensure the database is set up and accessible.
+Apply migrations with python manage.py migrate.
+Create Superuser
+
+Run python manage.py createsuperuser and follow the prompts.
+Collect Static Files
+
+Run python manage.py collectstatic.
+Run the Server
+
+Start the server with python manage.py runserver.
+Access the project at http://127.0.0.1:8000/.
+Production Deployment (if applicable)
+
+Follow additional steps for deploying in production.
+Documentation and Support
+
+Refer to the provided documentation for additional details.
+Contact support if you encounter any issues.
+
+
+After Run all 
+http://127.0.0.1:8000/admin/
+username:admin
+pass:pass12345
+
+#doctor login
+Email:dr@gmail.com
+pass:pass12345
+
+#paiten login
+Email:p@gmail.com
+pass:pass12345

@@ -1,0 +1,172 @@
+{% extends 'dashbaord/dashbaordbase.html' %}
+ {% block  content %}
+   
+
+<!-- Main Body -->
+        <div class="bg-white border border-4 rounded-lg shadow relative m-10">
+            <div class="flex items-start justify-between p-5 border-b rounded-t">
+                <h3 class="text-xl font-semibold">
+                    KidneyCare AI
+                </h3>
+            </div>
+            <div class="p-6 space-y-6">
+                <form action="#" method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-12 gap-6">
+                        <div class="col-span-3">
+                            <label for="age" class="text-sm font-medium text-gray-900 block mb-2">Enter age</label>
+                            <input type="number" name="age" id="age" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter age:" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="blood_pressure" class="text-sm font-medium text-gray-900 block mb-2">Enter blood pressure:</label>
+                            <input type="number" name="blood_pressure" id="blood_pressure" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter blood pressure:" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="specific_gravity" class="text-sm font-medium text-gray-900 block mb-2">Enter specific gravity:</label>
+                            <input type="number" name="specific_gravity" id="specific_gravity" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter specific gravity:" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="albumin" class="text-sm font-medium text-gray-900 block mb-2">Enter albumin level:</label>
+                            <input type="number" name="albumin" id="albumin" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter albumin level:" required="">
+                        </div>
+                        <!-- 2 row -->
+                        
+                        <div class="col-span-3">
+                            <label for="sugar" class="text-sm font-medium text-gray-900 block mb-2">Enter sugar level:</label>
+                            <input type="number" name="sugar" id="sugar" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter sugar level:" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="red_blood_cells" class="text-sm font-medium text-gray-900 block mb-2">Enter red blood cells count:</label>
+                            <select name="red_blood_cells" id="red_blood_cells" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter red blood cells count (1 for normal, 0 for abnormal)</option>
+                                <option value="1">Normal</option>
+                                <option value="0">Abnormal</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="pus_cell" class="text-sm font-medium text-gray-900 block mb-2">Enter pus cell count:</label>
+                            <select name="pus_cell" id="pus_cell" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter pus cell count (1 for normal, 0 for abnormal)</option>
+                                <option value="1">Normal</option>
+                                <option value="0">Abnormal</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="pus_cell_clumps" class="text-sm font-medium text-gray-900 block mb-2">Enter pus cell clumps:</label>
+                            <select name="pus_cell_clumps" id="pus_cell_clumps" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter pus cell clumps (1 for present, 0 for not present)</option>
+                                <option value="1">Present</option>
+                                <option value="0">Not Present</option>
+                            </select>
+                        </div>
+                        <!-- 3row -->
+                        <div class="col-span-3">
+                            <label for="bacteria" class="text-sm font-medium text-gray-900 block mb-2">Enter bacteria level:</label>
+                            <select name="bacteria" id="bacteria" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter bacteria level (1 for present, 0 for not present)</option>
+                                <option value="1">Present</option>
+                                <option value="0">Not Present</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="blood_glucose_random" class="text-sm font-medium text-gray-900 block mb-2">Enter blood glucose random</label>
+                            <input type="number" name="blood_glucose_random" id="blood_glucose_random" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter blood glucose random:" required="">
+                        </div>
+                   
+                        <div class="col-span-3">
+                            <label for="blood_urea" class="text-sm font-medium text-gray-900 block mb-2">Enter blood urea:</label>
+                            <input type="number" name="blood_urea" id="blood_urea" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter blood urea:" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="serum_creatinine" class="text-sm font-medium text-gray-900 block mb-2">Enter serum creatinine:</label>
+                            <input type="number" name="serum_creatinine" id="serum_creatinine" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter serum creatinine:" required="">
+                        </div>
+                        <!-- 4 row -->
+                        <div class="col-span-3">
+                            <label for="sodium" class="text-sm font-medium text-gray-900 block mb-2">Enter sodium level</label>
+                            <input type="number" name="sodium" id="sodium" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter sodium level" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="potassium" class="text-sm font-medium text-gray-900 block mb-2">Enter potassium level:</label>
+                            <input type="number" name="potassium" id="potassium" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter potassium level:" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="haemoglobin" class="text-sm font-medium text-gray-900 block mb-2">Enter haemoglobin level</label>
+                            <input type="number" name="haemoglobin" id="haemoglobin" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter haemoglobin level" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="packed_cell_volume" class="text-sm font-medium text-gray-900 block mb-2">Enter packed cell volume</label>
+                            <input type="number" name="packed_cell_volume" id="packed_cell_volume" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter packed cell volume" required="">
+                        </div>
+                        <!-- 5 row -->
+                       
+                        <div class="col-span-3">
+                            <label for="white_blood_cell_count" class="text-sm font-medium text-gray-900 block mb-2">Enter white blood cell count</label>
+                            <input type="number" name="white_blood_cell_count" id="white_blood_cell_count" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter white blood cell count" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="red_blood_cell_count" class="text-sm font-medium text-gray-900 block mb-2">Enter red blood cell count</label>
+                            <input type="number" name="red_blood_cell_count" id="red_blood_cell_count" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter red blood cell count" required="">
+                        </div>
+                        <div class="col-span-3">
+                            <label for="hypertension" class="text-sm font-medium text-gray-900 block mb-2">Enter hypertension:</label>
+                            <select name="hypertension" id="hypertension" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter hypertension (1 for yes, 0 for no)</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="diabetes_mellitus" class="text-sm font-medium text-gray-900 block mb-2">Enter diabetes mellitus:</label>
+                            <select name="diabetes_mellitus" id="diabetes_mellitus" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter diabetes mellitus (1 for yes, 0 for no)</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <!-- 6 row -->
+                        <div class="col-span-3">
+                            <label for="coronary_artery_disease" class="text-sm font-medium text-gray-900 block mb-2">Enter coronary artery disease:</label>
+                            <select name="coronary_artery_disease" id="coronary_artery_disease" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter coronary artery disease (1 for yes, 0 for no)</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="appetite" class="text-sm font-medium text-gray-900 block mb-2">Enter appetite:</label>
+                            <select name="appetite" id="appetite" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter appetite (1 for good, 0 for poor)</option>
+                                <option value="1">Good</option>
+                                <option value="0">Poor</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="peda_edema" class="text-sm font-medium text-gray-900 block mb-2">Enter pedal edema:</label>
+                            <select name="peda_edema" id="peda_edema" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter pedal edema (1 for yes, 0 for no)</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label for="aanemia" class="text-sm font-medium text-gray-900 block mb-2">Enter anemia:</label>
+                            <select name="aanemia" id="aanemia" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                <option selected>Enter anemia (1 for yes, 0 for no)</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="p-6 border-t border-gray-200 rounded-b">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-300" type="submit">Test Now</button>
+                    </div>
+                </form>
+            </div>
+            <!-- input_values.append(float(input("Enter anemia (1 for yes, 0 for no): "))) -->
+        
+        </div>
+
+
+{% endblock %} 

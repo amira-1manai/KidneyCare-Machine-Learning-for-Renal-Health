@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/heroicons@1.0.6/outline"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>KidneyCare AI/ Patient</title>
+    <style>
+        /* Optional: Add custom styles here */
+        .sidebar-expanded {
+            width: 16rem; /* Expanded width */
+        }
+        .sidebar-collapsed {
+            width: 4rem; /* Collapsed width */
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 1rem;
+            top: 3rem;
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #374151;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="flex h-screen bg-gradient-to-br from-white via-gray-100 to-blue-200">
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-gray-800 text-white flex flex-col sidebar-expanded transition-all duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-4">
+            <button id="sidebarToggle" class="p-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md focus:outline-none">
+                <svg id="expandIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <svg id="collapseIcon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+                  
+            </button>
+        </div>
+        <div class="flex-1">
+            <nav id="sidebarMenu" class="mt-8">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="{% url 'patient_dashboard'%}" class="flex items-center p-4 hover:bg-gray-700">
+                           
+                            <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-1.5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                              </svg>
+                              
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'preport'%}" class="flex items-center p-4 hover:bg-gray-700">
+                            <svg class="w-6 h-6 mr-3 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                              </svg>
+                              
+                            Reports
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="#" class="flex items-center p-4 hover:bg-gray-700">
+                            <svg class="w-6 h-6 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3v18M18 3v18"></path>
+                            </svg>
+                            Settings
+                        </a>
+                    </li> -->
+                    <li>
+                        <a href="{% url 'patinettest'%}" class="flex items-center p-4 hover:bg-gray-700">
+                           
+                            <svg class="w-6 h-6 mr-3"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+                              </svg>
+                              
+                            Test
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'disease_progression'%}" class="flex items-center p-4 hover:bg-gray-700">
+                           
+                            <svg class="w-6 h-6 mr-3"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+                              </svg>
+                              
+                              Disease Monitoring
+                        </a>
+                    </li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        
+        <!-- Header -->
+        <header class="bg-white shadow-md p-4 flex items-center justify-between relative">
+            <div class="text-lg font-semibold">
+                <h1 class="text-3xl font-bold">
+                <i class="fas fa-kidney text-blue-500 mr-2"></i>
+                <span class="text-black">KidneyCare</span> 
+                <span class="text-blue-500">AI</span>
+            </h1>
+        </div>
+            <div class="flex items-center space-x-4">
+                <button id="profileButton" class="flex items-center space-x-2">
+                    {% if profile.image %}
+                    <img src="{{ profile.image.url }}" alt="Profile" class="w-8 h-8 rounded-full">
+                    {% endif %}
+                    <span class="text-gray-600 hover:text-gray-800">{{ profile.user.username }}</span>
+                </button>
+            </div>
+            <div id="dropdown" class="dropdown-content absolute right-4 top-12 bg-white shadow-lg rounded-md">
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Role: {{ profile.role }}</a>
+                <a href="{% url 'logout'%}" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+            </div>
+        </header>
+
+        {% block  content %}
+
+
+        {% endblock %}
+
+        <!-- Footer -->
+        <footer class="bg-white text-black p-4 text-center">
+            &copy; 2024 KidneyCare AI. All rights reserved.
+        </footer>
+        
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const expandIcon = document.getElementById('expandIcon');
+        const collapseIcon = document.getElementById('collapseIcon');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        
+        sidebarToggle.addEventListener('click', () => {
+            const isCollapsed = sidebar.classList.contains('sidebar-collapsed');
+            
+            if (isCollapsed) {
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.add('sidebar-expanded');
+                expandIcon.classList.remove('hidden');
+                collapseIcon.classList.add('hidden');
+                sidebarMenu.style.display = 'block'; // Show menu items
+            } else {
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.remove('sidebar-expanded');
+                expandIcon.classList.add('hidden');
+                collapseIcon.classList.remove('hidden');
+                sidebarMenu.style.display = 'none'; // Hide menu items
+            }
+        });
+
+        const profileButton = document.getElementById('profileButton');
+        const dropdown = document.getElementById('dropdown');
+
+        profileButton.addEventListener('click', () => {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close the dropdown if clicked outside
+        window.addEventListener('click', (event) => {
+            if (!profileButton.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>            
+

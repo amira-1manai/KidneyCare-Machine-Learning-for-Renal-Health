@@ -1,0 +1,10 @@
+.h1{
+    font-size: 30px;
+    color: brown;
+}
+.viewport-max {
+    min-height: 100vh;
+}
+.sidebar {
+    border-right: 1px solid rgba(0, 0, 0, .2);
+}

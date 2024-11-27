@@ -1,0 +1,150 @@
+{% extends 'dashbaord/dashbaordbase.html' %}
+ {% block  content %}
+   
+
+<!-- Main Body -->
+
+
+        <div class="bg-white border border-4 rounded-lg shadow relative m-4 md:m-10">
+            <div class="shadow-xl">
+                <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg p-4 md:p-10">
+                    <div class="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
+                        <div class="flex items-center flex-1 space-x-4">
+                            <h5>
+                                <span class="text-gray-500">Patient Report</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto"> <!-- Updated this div -->
+                        <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <!-- Repeat for each column header -->
+                                    <th scope="col" class="px-2 md:px-4 py-3">Age</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Blood Pressure</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Specific Gravity</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Albumin</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Sugar</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Red Blood Cells</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Pus Cell</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Pus Cell Clumps</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Bacteria</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Blood Glucose Random</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Blood Urea</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Serum Creatinine</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Sodium</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Potassium</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Haemoglobin</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Packed Cell Volume</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">White Blood Cell Count</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Red Blood Cell Count</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Hypertension</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Diabetes Mellitus</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Coronary Artery Disease</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Appetite</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Pedal Edema</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Anemia</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">Prediction</th>
+                                    <th scope="col" class="px-2 md:px-4 py-3">message</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for test in patient_tests %}
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <!-- Repeat for each data cell -->
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.age }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.blood_pressure }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.specific_gravity }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.albumin }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.sugar }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.red_blood_cells }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.pus_cell }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.pus_cell_clumps }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.bacteria }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.blood_glucose_random }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.blood_urea }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.serum_creatinine }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.sodium }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.potassium }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.haemoglobin }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.packed_cell_volume }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.white_blood_cell_count }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.red_blood_cell_count }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.hypertension }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.diabetes_mellitus }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.coronary_artery_disease }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.appetite }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.pedal_edema }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.anemia }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">{{ test.prediction }}</div>
+                                    </td>
+                                    <td class="px-2 md:px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center">
+                                            {% if test.message %}
+                                                {{ test.message }}
+                                            {% else %}
+                                                No message available
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %} 
