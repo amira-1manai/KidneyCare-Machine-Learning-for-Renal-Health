@@ -60,7 +60,7 @@ kidneycare/
 
 1. *Clonez le dépôt :*  
    ```bash
-   git clone https://github.com/votre-repo/kidneycare-ml.git  
+   git clone https://github.com/amira-1manai/KidneyCare-Machine-Learning-for-Renal-Health.git  
    cd kidneycare-ml  
    ```
 
